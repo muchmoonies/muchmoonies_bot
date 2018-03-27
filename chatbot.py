@@ -71,7 +71,7 @@ class TwitchBot(irc.bot.SingleServerIRCBot):
 
         if cmd in BUSTIN_COMMANDS:
             message = ''
-            #ignore, nutmod will take care of it
+            # ignore, nutmod will take care of it
 
         # Poll the API to get current game.
         elif cmd == "game":

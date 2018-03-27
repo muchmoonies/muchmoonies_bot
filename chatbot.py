@@ -13,6 +13,9 @@ MY_USERNAME = 'muchmoonies'
 MY_CLIENT_ID = 'kc9tgri2pcv7tw7w2dz4umxjkrz4xi'
 MY_OAUTH_TOKEN = 'ygmjzcl623ubwv2pjt2hcd8khu44g4'
 CHANNEL = 'muchmoonies'
+
+# TODO create and organize bustin commands to ignore
+# TODO combine the lists of commands to ignore
 BUSTIN_COMMANDS = ['nutcoins', 'howtobet', 'top', 'bet', 'hrs', 'discord', 'snapchat', 'twitter', 'youtube', 'battletag', 'battlenet', 'wowserver', 'rank', 'changes', 'highlight', 'song', 'subday', 'songrequest', 'sr', 'songlist', 'sub', 'tshirt', 'gender', 'skip', 'rankof', 'gamble', 'specs', 'shadowed', 'pubg', 'wrongsong', 'ws']
 
 
@@ -22,6 +25,7 @@ class TwitchBot(irc.bot.SingleServerIRCBot):
         self.token = token
         self.channel = '#' + channel
 
+        # TODO test api calls
         # Get the channel id, we will need this for v5 API calls
         url = 'https://api.twitch.tv/kraken/users?login=' + channel
         headers = {'Client-ID': client_id, 'Accept': 'application/vnd.twitchtv.v5+json'}
@@ -57,6 +61,10 @@ class TwitchBot(irc.bot.SingleServerIRCBot):
                 self.do_command(e, cmd)
 
         return
+
+    # TODO add recognization for @mentiona
+    # TODO recognize the sender for responses
+    # TODO implement a timer for command cooldowns
 
     def do_command(self, e, cmd):
         c = self.connection
@@ -106,6 +114,7 @@ def main():
         print("Usage: twitchbot <username> <client id> <token> <channel>")
         sys.exit('arguments = ' + str(len(sys.argv)))
 
+    # TODO remove redundancies
     username = MY_USERNAME
     client_id = MY_CLIENT_ID
     token = MY_OAUTH_TOKEN

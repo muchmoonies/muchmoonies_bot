@@ -14,9 +14,14 @@ MY_CLIENT_ID = 'kc9tgri2pcv7tw7w2dz4umxjkrz4xi'
 MY_OAUTH_TOKEN = 'ygmjzcl623ubwv2pjt2hcd8khu44g4'
 CHANNEL = 'muchmoonies'
 
-# TODO create and organize bustin commands to ignore
-# TODO combine the lists of commands to ignore
-BUSTIN_COMMANDS = ['nutcoins', 'howtobet', 'top', 'bet', 'hrs', 'discord', 'snapchat', 'twitter', 'youtube', 'battletag', 'battlenet', 'wowserver', 'rank', 'changes', 'highlight', 'song', 'subday', 'songrequest', 'sr', 'songlist', 'sub', 'tshirt', 'gender', 'skip', 'rankof', 'gamble', 'specs', 'shadowed', 'pubg', 'wrongsong', 'ws']
+NUTCOIN_COMMANDS = ['nutcoins', 'top', 'bet', 'gamble', 'hrs']
+SONG_COMMANDS = ['song', 'songrequest', 'sr', 'songlist', 'skip', 'wrongsong', 'ws']
+LINKS_COMMANDS = ['discord', 'snapchat', 'twitter', 'youtube',  'sub']
+INFO_COMMANDS = ['howtobet', 'changes', 'subday', 'specs', 'giveaway', 'followage']
+GAME_COMMANDS = ['battletag', 'battlenet', 'wowserver', 'rank', 'rankof']
+FUN_COMMANDS = ['gender', 'defcon', 'defcon1', 'defcon2', 'ban', 'slap', '8ball']
+REMOVED_COMMANDS = ['shadowed', 'pubg', 'highlight', 'tshirt']
+BUSTIN_COMMANDS = NUTCOIN_COMMANDS + SONG_COMMANDS + LINKS_COMMANDS + INFO_COMMANDS + GAME_COMMANDS + FUN_COMMANDS + REMOVED_COMMANDS
 
 
 class TwitchBot(irc.bot.SingleServerIRCBot):

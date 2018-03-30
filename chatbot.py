@@ -12,11 +12,12 @@ import requests
 MY_USERNAME = 'muchmoonies'
 MY_CLIENT_ID = 'kc9tgri2pcv7tw7w2dz4umxjkrz4xi'
 MY_OAUTH_TOKEN = 'ygmjzcl623ubwv2pjt2hcd8khu44g4'
+# CHANNEL = 'bustin_the_nuts'
 CHANNEL = 'muchmoonies'
 
 NUTCOIN_COMMANDS = ['nutcoins', 'top', 'bet', 'gamble', 'hrs']
-SONG_COMMANDS = ['song', 'songrequest', 'sr', 'songlist', 'skip', 'wrongsong', 'ws']
-LINKS_COMMANDS = ['discord', 'snapchat', 'twitter', 'youtube',  'sub']
+SONG_COMMANDS = ['song', 'nextsong', 'songrequest', 'sr', 'songlist', 'skip', 'wrongsong', 'ws']
+LINKS_COMMANDS = ['discord', 'snapchat', 'twitter', 'youtube',  'sub', 'donate']
 INFO_COMMANDS = ['howtobet', 'changes', 'subday', 'specs', 'giveaway', 'followage']
 GAME_COMMANDS = ['battletag', 'battlenet', 'wowserver', 'rank', 'rankof']
 FUN_COMMANDS = ['gender', 'defcon', 'defcon1', 'defcon2', 'ban', 'slap', '8ball']
@@ -83,35 +84,44 @@ class TwitchBot(irc.bot.SingleServerIRCBot):
             url = 'https://api.twitch.tv/kraken/channels/' + self.channel_id
             headers = {'Client-ID': self.client_id, 'Accept': 'application/vnd.twitchtv.v5+json'}
             r = requests.get(url, headers=headers).json()
-            c.privmsg(self.channel, r['display_name'] + ' is currently playing ' + r['game'])
+            # c.privmsg(self.channel, r['display_name'] + ' is currently playing ' + r['game'])
 
         # Poll the API the get the current status of the stream
         elif cmd == "title":
             url = 'https://api.twitch.tv/kraken/channels/' + self.channel_id
             headers = {'Client-ID': self.client_id, 'Accept': 'application/vnd.twitchtv.v5+json'}
             r = requests.get(url, headers=headers).json()
-            c.privmsg(self.channel, r['display_name'] + ' channel title is currently ' + r['status'])
+            # c.privmsg(self.channel, r['display_name'] + ' channel title is currently ' + r['status'])
 
-        # spam 46 nutsquads
+        # spam 46 nutsquads (46 is max)
         elif cmd == "nutsquad":
             message = ''
-            for i in range(45):
+            for i in range(46-1):
                 message += 'nutSquad '
             message += 'nutSquad'
             print 'sending ' + cmd
             c.privmsg(self.channel, message)
+
         elif cmd == "test":
             message = "Test1"
             print 'sending ' + message
             c.privmsg(self.channel, message)
+
         elif cmd == 'nuttest':
             message = 'nutSquad'
             print 'sending' + message
-            c.privmsg(self.channel, message)
+            send(self, message)
+           # c.privmsg(self.channel, message)
 
         # The command was not recognized
         else:
             print "ERROR, the following command was unrecognized: " + cmd
+
+def send(self, message):
+    c = self.connection
+    c.privmsg(self.channel, message)
+
+
 
 
 def main():
